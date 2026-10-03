@@ -22,7 +22,7 @@
                 Alamat
             </h2>
             <p>
-                Jl. Contoh No. 123, Indonesia
+                Jl. Waturenggong nomor 14, Gelgel, Klungkung, Klungkung, Bali
             </p>
         </div>
 
@@ -31,7 +31,7 @@
                 Email
             </h2>
             <p>
-                info@tokosaya.com
+                anggaraspatii@gmail.com
             </p>
         </div>
 
@@ -40,7 +40,7 @@
                 Telepon
             </h2>
             <p>
-                0812-3456-7890
+                0896-9733-0377
             </p>
         </div>
 
