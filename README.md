@@ -414,3 +414,7 @@ the license of future releases.
 [Unsplash](https://unsplash.com/),
 [Uifaces](http://uifaces.com/),
 [Unavatar](https://unavatar.io/)
+
+## Pertemuan 2
+
+Membuat Katalog Publik menggunakan Laravel Blade, routing, controller, dan data dummy produk.
