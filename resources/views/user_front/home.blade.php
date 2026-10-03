@@ -1,8 +1,13 @@
+
+
 @extends("user_front.layouts.app")
 
-
+@section("judul", "Home")
 
 @section("konten")
+
+<!-- Slider -->
+<section id="product-slider">
 
  <!-- Slider -->
     <section id="product-slider">
