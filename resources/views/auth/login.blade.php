@@ -16,9 +16,16 @@
 
         <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
 
-            <h1 class="text-2xl font-bold text-center mb-6">
-                Login
-            </h1>
+            < class="text-2xl font-bold text-center mb-2">
+            Login TokoSaya
+            <h1 class="text-2xl font-bold text-center mb-2">
+             Login TokoSaya
+        </h1>
+
+            <p class="text-center text-gray-500 mb-6">
+             Silakan masuk untuk mengakses Back Office
+             </p>
+
 
             @if ($errors->any())
                 <div class="bg-red-100 text-red-700 p-4 rounded mb-4">
