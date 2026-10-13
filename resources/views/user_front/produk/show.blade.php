@@ -17,10 +17,11 @@
             {{ $item['nama'] }}
         </h1>
 
-        <p class="mb-2">
-            <strong>Kategori:</strong>
-            {{ $item['kategori'] }}
-        </p>
+
+<p class="text-blue-600 font-medium mb-2">
+    {{ $item->kategori->nama ?? 'Tanpa kategori' }}
+</p>
+
 
         <p class="text-2xl font-bold mb-4">
             Rp {{ number_format($item['harga'], 0, ',', '.') }}

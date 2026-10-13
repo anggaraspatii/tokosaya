@@ -21,7 +21,7 @@
                 </h2>
 
                 <p class="text-gray-600 mb-2">
-                    Kategori: {{ $item['kategori'] }}
+                    Kategori: {{ $item->kategori->nama ?? 'Tanpa kategori' }}
                 </p>
 
                 <p class="text-lg font-bold mb-3">

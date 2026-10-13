@@ -19,6 +19,7 @@
                 TokoSaya - Back Office
             </h1>
 
+
             <div class="flex items-center gap-4">
 
                 <span>
@@ -32,6 +33,7 @@
                             class="bg-blue-500 hover:bg-red-700 px-4 py-2 rounded font-semibold">
                         Logout
                     </button>
+
                 </form>
 
             </div>
@@ -48,10 +50,18 @@
                 Dashboard
             </h2>
 
-            <p>
-                Selamat datang,
-                <strong>{{ auth()->user()->name }}</strong>.
-            </p>
+
+    <p class="mb-4">
+    Selamat datang,
+    <strong>{{ auth()->user()->name }}</strong>.
+    </p>
+
+    <a href="{{ route('back-office.produk.index') }}"
+   class="bg-blue-500 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold inline-flex items-center">
+    Halaman Produk
+    </a>
+
+
 
         </div>
 

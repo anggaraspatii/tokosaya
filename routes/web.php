@@ -1,13 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdukController;
+use App\Models\Produk;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProdukController as ProdukPublikController;
 use App\Http\Controllers\BackOffice\DashboardController;
-
+use App\Http\Controllers\BackOffice\KategoriController;
+use App\Http\Controllers\BackOffice\ProdukController as ProdukAdminController;
 
 Route::get('/', function () {
-    return view('user_front.home');
+    $produk = Produk::with('kategori')
+        ->where('status', true)
+        ->latest()
+        ->get();
+
+    return view('user_front.home', compact('produk'));
 })->name('home');
 
 Route::get('/admin', function () {
@@ -18,12 +25,14 @@ Route::get('/kontak', function () {
     return view('user_front.kontak');
 })->name('kontak');
 
-Route::get('/produk', [ProdukController::class, 'index'])
+// Katalog publik
+Route::get('/produk', [ProdukPublikController::class, 'index'])
     ->name('produk.index');
 
-Route::get('/produk/{id}', [ProdukController::class, 'show'])
+Route::get('/produk/{id}', [ProdukPublikController::class, 'show'])
     ->name('produk.show');
 
+// Login dan logout
 Route::get('/login', [AuthController::class, 'showLogin'])
     ->name('login');
 
@@ -33,6 +42,18 @@ Route::post('/login', [AuthController::class, 'login'])
 Route::post('/logout', [AuthController::class, 'logout'])
     ->name('logout');
 
-   Route::get('/back-office/dashboard', [DashboardController::class, 'index'])
-    ->middleware('pastikan.admin')
-    ->name('back-office.dashboard');
+// Back Office
+Route::middleware('pastikan.admin')
+    ->prefix('back-office')
+    ->name('back-office.')
+    ->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])
+            ->name('dashboard');
+
+Route::get('/back-office-produk', function () {
+    return view('back_office.produk.index');
+})->name('back-office-produk');
+
+        Route::resource('kategori', KategoriController::class);
+        Route::resource('produk', ProdukAdminController::class);
+    });

@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Data\ProdukDummy;
+use App\Models\Produk;
 
 class ProdukController extends Controller
 {
     public function index()
     {
-        $produk = ProdukDummy::semua();
+        $produk = Produk::with('kategori')
+            ->where('status', true)
+            ->latest()
+            ->get();
 
         return view('user_front.produk.index', compact('produk'));
     }
 
     public function show($id)
     {
-        $produk = ProdukDummy::semua();
-
-        $item = collect($produk)->firstWhere('id', $id);
-
-        if (!$item) {
-            abort(404);
-        }
+        $item = Produk::with('kategori')
+            ->where('status', true)
+            ->findOrFail($id);
 
         return view('user_front.produk.show', compact('item'));
     }

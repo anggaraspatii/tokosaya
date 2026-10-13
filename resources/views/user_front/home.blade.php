@@ -103,125 +103,99 @@
         </div>
     </section>
 
-    <!-- Popular product section -->
-    <section id="popular-products">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-8">Popular products</h2>
-            <div class="flex flex-wrap -mx-4">
-                <!-- Product 1 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/1.jpg" alt="Product 1" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">Summer black dress</a>
-                    <p class="my-2">Women</p>
-                    <div class="flex items-center mb-4">
-                      <span class="text-lg font-bold text-primary">$19.99</span>
-                      <span class="text-sm line-through ml-2">$24.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-                <!-- Product 2 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/2.jpg" alt="Product 2" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">Black suit</a>
-                    <p class=" my-2">Women</p>
-                    <div class="flex items-center mb-4">
-                      <span class="text-lg font-bold text-gray-900">$29.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-                <!-- Product 3 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/3.jpg" alt="Product 3" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">Black long dress</a>
-                    <p class=" my-2">Women, Accessories</p>
-                    <div class="flex items-center mb-4">
-                      <span class="text-lg font-bold text-gray-900">$15.99</span>
-                      <span class="text-sm line-through  ml-2">$19.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-                <!-- Product 4 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/4.jpg" alt="Product 4" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold">Black leather jacket</a>
-                    <p class="my-2">Women</p>
-                    <div class="flex items-center mb-4">
-                        <span class="text-lg font-bold text-primary">$39.99</span>
-                        <span class="text-sm line-through ml-2">$49.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-              </div>
-        </div>
-    </section>
 
-    <!-- Latest product section -->
-    <section id="latest-products" class="py-10">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-8">Latest products</h2>
-            <div class="flex flex-wrap -mx-4">
-                <!-- Product 1 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/5.jpg" alt="Product 1" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">Blue women's suit</a>
-                    <p class=" my-2">Women</p>
-                    <div class="flex items-center mb-4">
-                      <span class="text-lg font-bold text-primary">$19.99</span>
-                      <span class="text-sm line-through ml-2">$24.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-                <!-- Product 2 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/6.jpg" alt="Product 2" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">White shirt with long sleeves</a>
-                    <p class=" my-2">Women</p>
-                    <div class="flex items-center mb-4">
-                      <span class="text-lg font-bold text-gray-900">$29.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-                <!-- Product 3 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/7.jpg" alt="Product 3" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">Yellow men's suit</a>
-                    <p class="my-2">Men</p>
-                    <div class="flex items-center mb-4">
-                      <span class="text-lg font-bold text-gray-900">$15.99</span>
-                      <span class="text-sm line-through  ml-2">$19.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-                <!-- Product 4 -->
-                <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-8">
-                  <div class="bg-white p-3 rounded-lg shadow-lg">
-                    <img src="assets/images/products/8.jpg" alt="Product 4" class="w-full object-cover mb-4 rounded-lg">
-                    <a href="#" class="text-lg font-semibold mb-2">Red dress</a>
-                    <p class="my-2">Women</p>
-                    <div class="flex items-center mb-4">
-                        <span class="text-lg font-bold text-primary">$39.99</span>
-                        <span class="text-sm line-through ml-2">$49.99</span>
-                    </div>
-                    <button class="bg-primary border border-transparent hover:bg-transparent hover:border-primary text-white hover:text-primary font-semibold py-2 px-4 rounded-full w-full">Add to Cart</button>
-                  </div>
-                </div>
-              </div>
+<!-- Popular Products -->
+<section id="popular-products" class="py-10">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold">Produk Pilihan</h2>
+            <a href="{{ route('produk.index') }}"
+               class="text-primary font-semibold hover:underline">
+                Lihat Semua
+            </a>
         </div>
-    </section>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @forelse ($produk->take(4) as $item)
+                <div class="bg-white p-4 rounded-xl shadow-lg">
+                    @if ($item->gambar)
+                        <img
+                            src="{{ asset('storage/' . $item->gambar) }}"
+                            alt="{{ $item->nama }}"
+                            class="w-full h-56 object-cover mb-4 rounded-lg"
+                        >
+                    @endif
+
+                    <p class="text-sm text-gray-500 mb-1">
+                        {{ $item->kategori->nama ?? 'Fashion' }}
+                    </p>
+
+                    <h3 class="text-lg font-semibold mb-2">
+                        {{ $item->nama }}
+                    </h3>
+
+                    <p class="text-lg font-bold text-primary mb-4">
+                        Rp {{ number_format($item->harga, 0, ',', '.') }}
+                    </p>
+
+                    <a href="{{ route('produk.show', $item->id) }}"
+                       class="block text-center bg-primary text-white font-semibold py-2 px-4 rounded-full hover:opacity-90">
+                        Lihat Detail
+                    </a>
+                </div>
+            @empty
+                <p class="text-gray-500">
+                    Belum ada produk yang tersedia.
+                </p>
+            @endforelse
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Latest Products -->
+<section id="latest-products" class="py-10 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-8">Produk Terbaru</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @forelse ($produk->take(4) as $item)
+                <div class="bg-white p-4 rounded-xl shadow">
+                    @if ($item->gambar)
+                        <img
+                            src="{{ asset('storage/' . $item->gambar) }}"
+                            alt="{{ $item->nama }}"
+                            class="w-full h-56 object-cover mb-4 rounded-lg"
+                        >
+                    @endif
+
+                    <h3 class="text-lg font-semibold mb-2">
+                        {{ $item->nama }}
+                    </h3>
+
+                    <p class="text-sm text-gray-500 mb-2">
+                        {{ $item->kategori->nama ?? 'Fashion' }}
+                    </p>
+
+                    <p class="text-lg font-bold text-primary mb-4">
+                        Rp {{ number_format($item->harga, 0, ',', '.') }}
+                    </p>
+
+                    <a href="{{ route('produk.show', $item->id) }}"
+                       class="block text-center border border-primary text-primary font-semibold py-2 px-4 rounded-full hover:bg-primary hover:text-white">
+                        Lihat Detail
+                    </a>
+                </div>
+            @empty
+                <p class="text-gray-500">
+                    Belum ada produk yang tersedia.
+                </p>
+            @endforelse
+        </div>
+    </div>
+</section>
+
 
     <!-- Brand section -->
     <section id="brands" class="bg-white py-16 px-4">
