@@ -16,11 +16,12 @@ class ProdukController extends Controller
         return view('user_front.produk.index', compact('produk'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
         $item = Produk::with('kategori')
             ->where('status', true)
-            ->findOrFail($id);
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         return view('user_front.produk.show', compact('item'));
     }

@@ -34,7 +34,7 @@
 
                 <a
                     <a
-                  href="{{ route('produk.show', $item['id']) }}"
+                  href="{{ route('produk.show', $item->slug)}}"
                   class="bg-primary text-white px-4 py-2 rounded"
                 >
                   Lihat Detail

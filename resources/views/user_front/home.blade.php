@@ -182,7 +182,7 @@
                         Rp {{ number_format($item->harga, 0, ',', '.') }}
                     </p>
 
-                    <a href="{{ route('produk.show', $item->id) }}"
+                    <a href="{{ route('produk.show', $item->slug) }}"
                        class="block text-center border border-primary text-primary font-semibold py-2 px-4 rounded-full hover:bg-primary hover:text-white">
                         Lihat Detail
                     </a>

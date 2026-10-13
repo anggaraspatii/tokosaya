@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::get('/kontak', function () {
 Route::get('/produk', [ProdukPublikController::class, 'index'])
     ->name('produk.index');
 
-Route::get('/produk/{id}', [ProdukPublikController::class, 'show'])
+Route::get('/produk/{slug}', [ProdukPublikController::class, 'show'])
     ->name('produk.show');
 
 // Login dan logout
@@ -50,9 +51,9 @@ Route::middleware('pastikan.admin')
         Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('dashboard');
 
-Route::get('/back-office-produk', function () {
-    return view('back_office.produk.index');
-})->name('back-office-produk');
+        Route::get('/back-office-produk', function () {
+            return view('back_office.produk.index');
+        })->name('back-office-produk');
 
         Route::resource('kategori', KategoriController::class);
         Route::resource('produk', ProdukAdminController::class);
