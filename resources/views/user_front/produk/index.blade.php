@@ -7,12 +7,13 @@
 
 <div class="container mx-auto px-4 py-10">
 
-    <h1 class="text-3xl font-bold mb-8">
-        {{ __('web.product_list') }}
-    </h1>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
+    <h1 class="text-3xl font-bold mb-2">
+    {{ __('web.product_list') }}
+</h1>
+<p class="text-sm text-gray-500 mb-8">
+    {{ __('web.product_count', ['jumlah' => $jumlahProduk]) }}
+</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
         @forelse ($produk as $item)
 
             <div class="bg-white rounded-lg shadow overflow-hidden">
@@ -40,7 +41,6 @@
 
                 {{-- Informasi produk --}}
                 <div class="p-6">
-
                     <h2 class="text-xl font-bold mb-2">
                         {{ $item->nama }}
                     </h2>
@@ -51,7 +51,13 @@
                     </p>
 
                     <p class="text-lg font-bold mb-3">
-                        Rp {{ number_format($item->harga, 0, ',', '.') }}
+                     Rp {{ number_format($item->harga, 0, ',', '.') }}
+                    </p>
+
+                    {{-- Stok produk --}}
+                    <p class="text-sm mb-3
+                     {{ $item->stok > 0 ? 'text-green-600' : 'text-red-600' }}">
+                    {{ __('web.stock') }}: {{ $item->stok }}
                     </p>
 
                     <p class="text-gray-700 mb-4">

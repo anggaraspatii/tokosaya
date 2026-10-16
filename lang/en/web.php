@@ -31,7 +31,7 @@ return [
     'add_to_cart' => 'Add to Cart',
     'product_detail' => 'Product Details',
     'no_products' => 'No products available',
-
+    'product_count' => 'Showing :jumlah products',
     // Contact
     'contact_title' => 'Contact Us',
     'name' => 'Name',
