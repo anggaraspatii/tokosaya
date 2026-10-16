@@ -15,6 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
     $middleware->alias([
         'pastikan.admin' => \App\Http\Middleware\PastikanAdmin::class,
     ]);
+    $middleware->web(
+    append: [
+        \App\Http\Middleware\SetBahasa::class,
+    ],
+    );
 })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

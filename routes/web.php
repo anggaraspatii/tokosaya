@@ -8,6 +8,7 @@ use App\Http\Controllers\ProdukController as ProdukPublikController;
 use App\Http\Controllers\BackOffice\DashboardController;
 use App\Http\Controllers\BackOffice\KategoriController;
 use App\Http\Controllers\BackOffice\ProdukController as ProdukAdminController;
+use App\Http\Controllers\BahasaController;
 
 Route::get('/', function () {
     $produk = Produk::with('kategori')
@@ -25,6 +26,10 @@ Route::get('/admin', function () {
 Route::get('/kontak', function () {
     return view('user_front.kontak');
 })->name('kontak');
+
+Route::get('/bahasa/{bahasa}', [BahasaController::class, 'ubah'])
+    ->name('bahasa.ubah');
+
 
 // Katalog publik
 Route::get('/produk', [ProdukPublikController::class, 'index'])
