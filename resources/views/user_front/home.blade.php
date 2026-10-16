@@ -1,5 +1,3 @@
-
-
 @extends("user_front.layouts.app")
 
 @section("judul", "Home")
@@ -108,10 +106,12 @@
 <section id="popular-products" class="py-10">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold">Produk Pilihan</h2>
+            <h2 class="text-2xl font-bold">
+    {{ __('web.popular_products') }}
+</h2>
             <a href="{{ route('produk.index') }}"
                class="text-primary font-semibold hover:underline">
-                Lihat Semua
+                {{ __('web.view_all') }}
             </a>
         </div>
 
@@ -140,7 +140,7 @@
 
                     <a href="{{ route('produk.show', $item->id) }}"
                        class="block text-center bg-primary text-white font-semibold py-2 px-4 rounded-full hover:opacity-90">
-                        Lihat Detail
+                        {{ __('web.product_detail') }}
                     </a>
                 </div>
             @empty
@@ -157,7 +157,9 @@
 <!-- Latest Products -->
 <section id="latest-products" class="py-10 bg-gray-50">
     <div class="container mx-auto px-4">
-        <h2 class="text-2xl font-bold mb-8">Produk Terbaru</h2>
+        <h2 class="text-2xl font-bold mb-8">
+    {{ __('web.latest_products') }}
+</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             @forelse ($produk->take(4) as $item)
@@ -184,7 +186,7 @@
 
                     <a href="{{ route('produk.show', $item->slug) }}"
                        class="block text-center border border-primary text-primary font-semibold py-2 px-4 rounded-full hover:bg-primary hover:text-white">
-                        Lihat Detail
+                        {{ __('web.product_detail') }}
                     </a>
                 </div>
             @empty

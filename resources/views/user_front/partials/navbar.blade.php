@@ -21,32 +21,52 @@
             </div>
 
             <!-- Center section: Menu -->
-            <nav class="hidden lg:flex md:flex-grow justify-center">
-             <ul class="flex justify-center space-x-4 text-white">
 
-    <li>
-        <a href="{{ route('home') }}" class="hover:text-secondary font-semibold">
-            Home
+<nav class="hidden lg:flex flex-1 items-center justify-center">
+    <ul class="flex items-center justify-center space-x-4 text-white">
+        <li>
+            <a href="{{ route('home') }}" class="hover:text-secondary font-semibold">
+                {{ __('web.home') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('produk.index') }}" class="hover:text-secondary font-semibold">
+                {{ __('web.products') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('kontak') }}" class="hover:text-secondary font-semibold">
+                {{ __('web.contact') }}
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Right section: Buttons for desktop -->
+<div class="hidden lg:flex items-center space-x-4 relative">
+    <!-- Language switcher -->
+    <div class="flex items-center gap-2 text-white text-sm font-semibold">
+        <a href="{{ route('bahasa.ubah', ['bahasa' => 'id']) }}"
+           class="px-2 py-1 rounded {{ app()->getLocale() === 'id' ? 'bg-primary text-white' : 'hover:text-secondary' }}">
+            ID
         </a>
-    </li>
 
-    <li>
-        <a href="{{ route('produk.index') }}" class="hover:text-secondary font-semibold">
-            Produk
+        <span class="text-gray-400">|</span>
+
+        <a href="{{ route('bahasa.ubah', ['bahasa' => 'en']) }}"
+           class="px-2 py-1 rounded {{ app()->getLocale() === 'en' ? 'bg-primary text-white' : 'hover:text-secondary' }}">
+            EN
         </a>
-    </li>
+    </div>
 
-    <li>
-        <a href="{{ route('kontak') }}" class="hover:text-secondary font-semibold">
-            Kontak Kami
-        </a>
-    </li>
+    <!-- Pertahankan elemen cart, search, dan search field kamu di sini -->
+</div>
 
-</ul>
-            <!-- Right section: Buttons (for desktop) -->
-            <div class="hidden lg:flex items-center space-x-4 relative">
+
               <a href="register.html"
-                  class="bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">Register</a>
+                  class="mr-7 bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">Register</a>
               <a href="{{ route('login') }}"
                   class="bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">Login</a>
               <div class="relative group cart-wrapper">
@@ -106,19 +126,19 @@
     <nav id="mobile-menu-placeholder" class="mobile-menu hidden flex-col items-center space-y-8 lg:hidden">
       <ul class="w-full">
           <li>
-    <a href="{{ route('home') }}" class="hover:text-secondary font-bold block py-2">
-        Home
-    </a>
+   <a href="{{ route('home') }}" class="hover:text-secondary font-semibold">
+    {{ __('web.home') }}
+</a>
 </li>
 <li>
     <a href="{{ route('produk.index') }}" class="hover:text-secondary font-bold block py-2">
-        Produk
+        {{ __('web.products') }}
     </a>
 </li>
 
-<li>php artisan make:model Kategori -m
+<li>
     <a href="{{ route('kontak') }}" class="hover:text-secondary font-bold block py-2">
-        Kontak Kami
+        {{ __('web.contact') }}
     </a>
 </li>
 
@@ -159,11 +179,24 @@
           <li><a href="404.html" class="hover:text-secondary font-bold block py-2">404 page</a></li>
           <li><a href="checkout.html" class="hover:text-secondary font-bold block py-2">Checkout</a></li>
       </ul>
+
+<div class="flex items-center justify-center gap-3 text-white font-semibold mb-4">
+    <a href="{{ route('bahasa.ubah', ['bahasa' => 'id']) }}"
+       class="px-3 py-2 rounded {{ app()->getLocale() === 'id' ? 'bg-primary text-white' : 'hover:text-secondary' }}">
+        Bahasa Indonesia
+    </a>
+
+    <a href="{{ route('bahasa.ubah', ['bahasa' => 'en']) }}"
+       class="px-3 py-2 rounded {{ app()->getLocale() === 'en' ? 'bg-primary text-white' : 'hover:text-secondary' }}">
+        English
+    </a>
+</div>
+
       <div class="flex flex-col mt-6 space-y-2 items-center">
           <a href="register.html"
               class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">Register</a>
           <a href="register.html"
-              class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">Login</a>
+              class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">{{ __('web.login') }}</a>
           <a href="register.html"
               class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">Cart -&nbsp;<span>5</span>&nbsp;items</a>
       </div>

@@ -1,12 +1,14 @@
 
 @extends('user_front.layouts.app')
 
+@section('judul', __('web.product_detail'))
+
 @section('konten')
 <div class="max-w-5xl mx-auto px-6 py-10">
 
     <a href="{{ route('produk.index') }}"
        class="inline-block text-blue-600 hover:underline mb-6">
-        &larr; Kembali ke Katalog
+        &larr; {{ __('web.back') }} {{ __('web.product_list') }}
     </a>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-xl shadow p-6">
@@ -20,14 +22,14 @@
                 >
             @else
                 <div class="w-full h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-                    Gambar belum tersedia
+                    {{ __('web.image_unavailable') }}
                 </div>
             @endif
         </div>
 
         <div>
             <p class="text-blue-600 font-medium mb-2">
-                {{ $item->kategori->nama ?? 'Tanpa kategori' }}
+                {{ $item->kategori->nama ?? __('web.no_category') }}
             </p>
 
             <h1 class="text-3xl font-bold text-gray-800 mb-4">
@@ -38,19 +40,22 @@
                 Rp {{ number_format($item->harga, 0, ',', '.') }}
             </p>
 
-            <h2 class="font-semibold text-lg mb-2">Deskripsi Produk</h2>
+            <h2 class="font-semibold text-lg mb-2">
+                {{ __('web.description') }}
+            </h2>
+
             <p class="text-gray-600 leading-relaxed mb-6">
                 {{ $item->deskripsi }}
             </p>
 
             <p class="text-gray-700 mb-6">
-                Stok tersedia:
+                {{ __('web.stock_available') }}:
                 <span class="font-semibold">{{ $item->stok }}</span>
             </p>
 
             <a href="{{ route('produk.index') }}"
                class="inline-block bg-pink-600 hover:bg-pink-700 text-white px-5 py-3 rounded-lg">
-                Lihat Produk Lain
+                {{ __('web.other_products') }}
             </a>
         </div>
 
