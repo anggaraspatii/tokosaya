@@ -11,15 +11,25 @@
             </a>
 
             <!-- Hamburger menu (for mobile) -->
-            <div class="flex lg:hidden">
-                <button id="hamburger" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
+            <button
+            id="hamburger"
+            type="button"
+            class="text-white focus:outline-none lg:hidden"
+            aria-label="Buka menu"
+            aria-expanded="false">
 
+            <svg class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                 stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7">
+            </path>
+            </svg>
+        </button>
             <!-- Center section: Menu -->
 
 <nav class="hidden lg:flex flex-1 items-center justify-center">
@@ -66,48 +76,32 @@
 
 
               <a href="register.html"
-                  class="mr-7 bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">Register</a>
+                  class="mr-7 bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">{{ __('web.register') }}</a>
               <a href="{{ route('login') }}"
-                  class="bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">Login</a>
-              <div class="relative group cart-wrapper">
-                  <a href="/cart.html" >
-                      <img src="{{ asset('assets/user_front/images/cart-shopping.svg') }}"
-                        alt="Cart"
-                     class="h-6 w-6 group-hover:scale-120">
-                  </a>
-                  <!-- Cart dropdown -->
-                  <div class="absolute right-0 mt-1 w-80 bg-white shadow-lg p-4 rounded hidden group-hover:block">
-                      <div class="space-y-4">
-                          <!-- product item -->
-                          <div class="flex items-center justify-between pb-4 border-b border-gray-line">
-                              <div class="flex items-center">
-                                  <img src="{{ asset('assets/user_front/images/single-product/1.jpg') }}"
-                                    alt="Product"
-                                     class="h-12 w-12 object-cover rounded mr-2">
-                                  <div>
-                                      <p class="font-semibold">Summer black dress</p>
-                                      <p class="text-sm">Quantity: 1</p>
-                                  </div>
-                              </div>
-                              <p class="font-semibold">$25.00</p>
-                          </div>
-                          <!-- product item -->
-                          <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <img src="{{ asset('assets/user_front/images/single-product/2.jpg') }}"
-                                     alt="Product"
-                                    class="h-12 w-12 object-cover rounded mr-2">
-                                <div>
-                                    <p class="font-semibold">Black suit</p>
-                                    <p class="text-sm">Quantity: 1</p>
-                                </div>
-                            </div>
-                            <p class="font-semibold">$125.00</p>
-                        </div>
-                      </div>
-                      <a href="/cart.html" class="block text-center mt-4 border border-primary bg-primary hover:bg-transparent text-white hover:text-primary py-2 rounded-full font-semibold">Go to Cart</a>
-                  </div>
-              </div>
+                  class="bg-primary border border-primary hover:bg-transparent text-white hover:text-primary font-semibold px-4 py-2 rounded-full inline-block">{{ __('web.login') }}</a>
+
+
+<div class="relative cart-wrapper">
+    <a href="{{ route('keranjang.index') }}"
+       class="relative inline-flex items-center text-white"
+       aria-label="{{ app()->getLocale() === 'en' ? 'Shopping cart' : 'Keranjang belanja' }}">
+
+        <img src="{{ asset('assets/user_front/images/cart-shopping.svg') }}"
+             alt="Cart"
+             class="h-6 w-6">
+
+         @php
+    $jumlahKeranjang = app(\App\Services\Keranjang::class)->jumlahItem();
+@endphp
+
+@if ($jumlahKeranjang > 0)
+    <span style="position: absolute; top: -8px; right: -8px; background: red; color: white; border-radius: 50%; min-width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; padding: 2px;">
+        {{ $jumlahKeranjang }}
+    </span>
+@endif
+    </a>
+</div>
+
               <a id="search-icon" href="javascript:void(0);" class="text-white hover:text-secondary group">
                  <img src="{{ asset('assets/user_front/images/search-icon.svg') }}" alt="Search"
                     class="h-6 w-6 transition-transform transform group-hover:scale-120">
@@ -122,88 +116,59 @@
         </div>
     </header>
 
-    <!-- Mobile menu -->
-    <nav id="mobile-menu-placeholder" class="mobile-menu hidden flex-col items-center space-y-8 lg:hidden">
-      <ul class="w-full">
-          <li>
-   <a href="{{ route('home') }}" class="hover:text-secondary font-semibold">
-    {{ __('web.home') }}
-</a>
-</li>
-<li>
-    <a href="{{ route('produk.index') }}" class="hover:text-secondary font-bold block py-2">
+{{-- Mobile Menu --}}
+<nav id="mobile-menu-placeholder"
+    class="hidden lg:hidden flex-col gap-2 bg-gray-dark px-6 py-6 text-white">
+
+    {{-- Home --}}
+    <a href="{{ route('home') }}"
+        class="block rounded-lg px-4 py-3 font-semibold hover:bg-white/10">
+        {{ __('web.home') }}
+    </a>
+
+    {{-- Produk --}}
+    <a href="{{ route('produk.index') }}"
+        class="block rounded-lg px-4 py-3 font-semibold hover:bg-white/10">
         {{ __('web.products') }}
     </a>
-</li>
 
-<li>
-    <a href="{{ route('kontak') }}" class="hover:text-secondary font-bold block py-2">
+    {{-- Kontak --}}
+    <a href="{{ route('kontak') }}"
+        class="block rounded-lg px-4 py-3 font-semibold hover:bg-white/10">
         {{ __('web.contact') }}
     </a>
-</li>
 
-          <!-- Men Dropdown -->
-          <li class="relative group" x-data="{ open: false }">
-              <a @click="open = !open; $event.preventDefault()" class="hover:text-secondary font-bold  py-2 flex justify-center items-center cursor-pointer">
-                <span>Men</span>
-                <span @click.stop="open = !open">
-                    <i :class="open ? 'fas fa-chevron-up text-xs ml-2' : 'fas fa-chevron-down text-xs ml-2'"></i>
-                </span>
-              </a>
-              <ul class="mobile-dropdown-menu" x-show="open" x-transition class="space-y-2">
-                  <li><a href="shop.html" class="hover:text-secondary font-bold block pt-2 pb-3">Shop Men</a></li>
-                  <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Men item 1</a></li>
-                  <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Men item 2</a></li>
-                  <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Men item 3</a></li>
-              </ul>
-          </li>
+    <div class="my-2 border-t border-white/20"></div>
 
-          <!-- Women Dropdown -->
-          <li class="relative group" x-data="{ open: false }">
-              <a @click="open = !open; $event.preventDefault()" class="hover:text-secondary font-bold py-2 flex justify-center items-center cursor-pointer">
-                    <span>Women</span>
-                    <span @click.stop="open = !open">
-                        <i :class="open ? 'fas fa-chevron-up text-xs ml-2' : 'fas fa-chevron-down text-xs ml-2'"></i>
-                    </span>
-              </a>
-              <ul class="mobile-dropdown-menu" x-show="open" x-transition class="pl-4 space-y-2">
-                  <li><a href="shop.html" class="hover:text-secondary font-bold block py-2">Shop Women</a></li>
-                  <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Women item 1</a></li>
-                  <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Women item 2</a></li>
-                  <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Women item 3</a></li>
-              </ul>
-          </li>
+    {{-- Pilihan Bahasa --}}
+    <p class="block rounded-lg px-4 py-3 font-semibold hover:bg-white/10">
+        Bahasa / Language
+    </p>
 
-          <li><a href="shop.html" class="hover:text-secondary font-bold block py-2">Shop</a></li>
-          <li><a href="single-product-page.html" class="hover:text-secondary font-bold block py-2">Product</a></li>
-          <li><a href="404.html" class="hover:text-secondary font-bold block py-2">404 page</a></li>
-          <li><a href="checkout.html" class="hover:text-secondary font-bold block py-2">Checkout</a></li>
-      </ul>
+    <div class="grid grid-cols-2 gap-3 px-4 py-2">
+        <a href="{{ route('bahasa.ubah', ['bahasa' => 'id']) }}"
+            class="rounded-lg border px-3 py-3 text-center font-semibold
+            {{ app()->getLocale() === 'id'
+                ? 'border-primary bg-primary text-white'
+                : 'border-white/30 hover:bg-white/10' }}">
+            🇮🇩 Bahasa Indonesia
+        </a>
 
-<div class="flex items-center justify-center gap-3 text-white font-semibold mb-4">
-    <a href="{{ route('bahasa.ubah', ['bahasa' => 'id']) }}"
-       class="px-3 py-2 rounded {{ app()->getLocale() === 'id' ? 'bg-primary text-white' : 'hover:text-secondary' }}">
-        Bahasa Indonesia
+        <a href="{{ route('bahasa.ubah', ['bahasa' => 'en']) }}"
+            class="rounded-lg border px-3 py-3 text-center font-semibold
+            {{ app()->getLocale() === 'en'
+                ? 'border-primary bg-primary text-white'
+                : 'border-white/30 hover:bg-white/10' }}">
+            🇬🇧 English
+        </a>
+    </div>
+
+    <div class="my-2 border-t border-white/20"></div>
+
+    {{-- Login --}}
+    <a href="{{ route('login') }}"
+        class="block rounded-full border border-primary bg-primary px-4 py-3 text-center font-semibold text-white hover:bg-transparent">
+        {{ __('web.login') }}
     </a>
 
-    <a href="{{ route('bahasa.ubah', ['bahasa' => 'en']) }}"
-       class="px-3 py-2 rounded {{ app()->getLocale() === 'en' ? 'bg-primary text-white' : 'hover:text-secondary' }}">
-        English
-    </a>
-</div>
-
-      <div class="flex flex-col mt-6 space-y-2 items-center">
-          <a href="register.html"
-              class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">Register</a>
-          <a href="register.html"
-              class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">{{ __('web.login') }}</a>
-          <a href="register.html"
-              class="bg-primary hover:bg-transparent text-white hover:text-primary border border-primary font-semibold px-4 py-2 rounded-full flex items-center justify-center min-w-[110px]">Cart -&nbsp;<span>5</span>&nbsp;items</a>
-      </div>
-      <!-- Search field -->
-      <div
-          class="  top-full right-0 mt-2 w-full bg-white shadow-lg p-2 rounded">
-          <input type="text" class="w-full p-2 border border-gray-300 rounded"
-              placeholder="Search for products...">
-      </div>
-    </nav>
+</nav>
