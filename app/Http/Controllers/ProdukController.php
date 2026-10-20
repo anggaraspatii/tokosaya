@@ -7,15 +7,19 @@ use App\Models\Produk;
 class ProdukController extends Controller
 {
     public function index()
-    {
-        $produk = Produk::with('kategori')
-            ->where('status', true)
-            ->latest()
-            ->get();
+{
+    $produk = Produk::with('kategori')
+        ->where('status', true)
+        ->latest()
+        ->get();
 
-        return view('user_front.produk.index', compact('produk'));
-    }
+    $jumlahProduk = $produk->count();
 
+    return view(
+        'user_front.produk.index',
+        compact('produk', 'jumlahProduk')
+    );
+}
     public function show($slug)
     {
         $item = Produk::with('kategori')
