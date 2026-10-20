@@ -9,6 +9,7 @@ use App\Http\Controllers\BackOffice\DashboardController;
 use App\Http\Controllers\BackOffice\KategoriController;
 use App\Http\Controllers\BackOffice\ProdukController as ProdukAdminController;
 use App\Http\Controllers\BahasaController;
+use App\Http\Controllers\KeranjangController;
 
 Route::get('/', function () {
     $produk = Produk::with('kategori')
@@ -34,6 +35,23 @@ Route::get('/bahasa/{bahasa}', [BahasaController::class, 'ubah'])
 // Katalog publik
 Route::get('/produk', [ProdukPublikController::class, 'index'])
     ->name('produk.index');
+
+
+ // Keranjang belanja
+Route::get('/keranjang', [KeranjangController::class, 'index'])
+    ->name('keranjang.index');
+
+Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])
+    ->name('keranjang.tambah');
+
+Route::patch('/keranjang/{produkId}', [KeranjangController::class, 'update'])
+    ->name('keranjang.update');
+
+Route::delete('/keranjang/{produkId}', [KeranjangController::class, 'hapus'])
+    ->name('keranjang.hapus');
+
+Route::delete('/keranjang', [KeranjangController::class, 'kosongkan'])
+    ->name('keranjang.kosongkan');
 
 Route::get('/produk/{slug}', [ProdukPublikController::class, 'show'])
     ->name('produk.show');
