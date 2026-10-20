@@ -8,6 +8,7 @@ return [
     'login' => 'Login',
     'logout' => 'Logout',
     'language' => 'Language',
+    'register' => 'Register',
 
     // Home
     'hero_title' => 'Discover Your Best Style',
@@ -48,8 +49,32 @@ return [
     'operating_hours' => 'Business Hours',
     'schedule' => 'Monday - Saturday, 8:00 AM - 5:00 PM',
 
+    // Shopping Cart
+    'cart_title' => 'Shopping Cart',
+    'cart_product' => 'Product',
+    'cart_price' => 'Price',
+    'cart_quantity' => 'Quantity',
+    'cart_subtotal' => 'Subtotal',
+    'cart_action' => 'Action',
+    'cart_update' => 'Update',
+    'cart_remove' => 'Remove',
+    'cart_empty' => 'Your shopping cart is empty.',
+    'cart_start_shopping' => 'Start Shopping',
+    'cart_total_items' => 'Total Items',
+    'cart_total_price' => 'Total Price',
+    'cart_checkout' => 'Proceed to Checkout',
+    'cart_added' => 'Product added to cart successfully.',
+    'cart_updated' => 'Product quantity updated successfully.',
+    'cart_removed' => 'Product removed from cart successfully.',
+    'cart_stock_error' => 'Insufficient stock. Remaining stock: :stok units.',
+    'cart_confirm_remove' => 'Are you sure you want to remove this product?',
+    'cart_clear' => 'Empty Cart',
+    'cart_confirm_clear' => 'Are you sure you want to empty your cart?',
+    'cart_empty_description' => 'Find your favorite products and add them to your cart.',
+    'cart_cleared' => 'Shopping cart emptied successfully.',
+    'cart_min_quantity' => 'Product quantity must be at least 1.',
 
-    // General
+    // Generala
     'welcome' => 'Welcome',
     'back' => 'Back',
     'submit' => 'Submit',
