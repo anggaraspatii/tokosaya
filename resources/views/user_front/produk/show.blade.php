@@ -56,10 +56,57 @@
                     {{ $item->deskripsi }}
                 </p>
 
-                <p class="text-gray-600 mb-6">
-                    {{ __('web.stock_available') }}:
-                    {{ $item->stok }}
-                </p>
+
+{{-- Informasi stok --}}
+<div class="mb-6">
+    <p class="text-gray-600 mb-2">
+        {{ __('web.stock_available') }}:
+        <span class="font-semibold {{ $item->stok > 0 ? 'text-green-600' : 'text-red-600' }}">
+            {{ $item->stok }}
+        </span>
+    </p>
+
+    @if ($item->stok > 0)
+        <form action="{{ route('keranjang.tambah') }}" method="POST">
+            @csrf
+
+            <input type="hidden" name="produk_id" value="{{ $item->id }}">
+
+            <label for="jumlah" class="block font-semibold mb-2">
+                Jumlah
+            </label>
+
+            <input
+                type="number"
+                id="jumlah"
+                name="jumlah"
+                value="1"
+                min="1"
+                max="{{ $item->stok }}"
+                required
+                class="w-24 border border-gray-300 rounded px-3 py-2 mb-4"
+            >
+
+            <button
+                type="submit"
+                class="block bg-primary text-white px-5 py-3 rounded hover:opacity-90"
+            >
+                Masuk Keranjang
+            </button>
+        </form>
+    @else
+        <p class="text-red-600 font-semibold mb-4">
+            Stok Habis
+        </p>
+    @endif
+</div>
+
+<a
+    href="{{ route('produk.index') }}"
+    class="inline-block border border-primary text-primary px-5 py-3 rounded hover:bg-primary hover:text-white"
+>
+    {{ __('web.other_products') }}
+</a>
 
                 <a href="{{ route('produk.index') }}"
                    class="inline-block bg-primary text-white px-5 py-3 rounded hover:opacity-90">
