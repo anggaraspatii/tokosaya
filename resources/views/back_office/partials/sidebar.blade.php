@@ -59,12 +59,12 @@
                          </li>
                      </ul>
                  </li>
-                 <li class="nav-item">
-                     <a href="./starter.html" class="nav-link">
-                         <i class="nav-icon bi bi-file-earmark"></i>
-                         <p>Starter Page</p>
-                     </a>
-                 </li>
+                   <li class="nav-item">
+    <a href="{{ route('back-office.pesanan.index') }}" class="nav-link">
+        <i class="nav-icon bi bi-receipt"></i>
+        <p>Pesanan</p>
+    </a>
+</li>
                  <li class="nav-item">
                      <a href="./generate/theme.html" class="nav-link">
                          <i class="nav-icon bi bi-palette"></i>

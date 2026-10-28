@@ -9,6 +9,12 @@
                       <i class="bi bi-list"></i>
                   </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('back-office.pesanan.index') }}" class="nav-link">
+                <i class="bi bi-receipt me-1"></i>
+                 Pesanan
+                </a>
+            </li>
 
               <li class="nav-item d-none d-md-block">
                   <a href="./index.html" class="nav-link">
