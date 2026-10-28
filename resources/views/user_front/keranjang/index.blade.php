@@ -129,6 +129,12 @@
         {{ __('web.cart_total_price') }}:
         Rp {{ number_format($totalHarga, 0, ',', '.') }}
         </p>
+        <a
+             href="{{ route('checkout.index') }}"
+            style="display: inline-block; background-color: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; margin-bottom: 24px;"
+        >
+         {{ app()->getLocale() === 'en' ? 'Proceed to Checkout' : 'Lanjut ke Checkout' }}
+        </a>
             <form
                 {{ __('web.cart_clear') }}
                 method="POST"

@@ -10,6 +10,8 @@ use App\Http\Controllers\BackOffice\KategoriController;
 use App\Http\Controllers\BackOffice\ProdukController as ProdukAdminController;
 use App\Http\Controllers\BahasaController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\BackOffice\PesananController;
 
 Route::get('/', function () {
     $produk = Produk::with('kategori')
@@ -50,6 +52,16 @@ Route::patch('/keranjang/{produkId}', [KeranjangController::class, 'update'])
 Route::delete('/keranjang/{produkId}', [KeranjangController::class, 'hapus'])
     ->name('keranjang.hapus');
 
+ // Checkout
+Route::get('/checkout', [CheckoutController::class, 'index'])
+    ->name('checkout.index');
+
+Route::post('/checkout', [CheckoutController::class, 'store'])
+    ->name('checkout.store');
+
+Route::get('/checkout/sukses', [CheckoutController::class, 'sukses'])
+    ->name('checkout.sukses');
+
 Route::delete('/keranjang', [KeranjangController::class, 'kosongkan'])
     ->name('keranjang.kosongkan');
 
@@ -71,6 +83,14 @@ Route::middleware('pastikan.admin')
     ->prefix('back-office')
     ->name('back-office.')
     ->group(function () {
+        Route::resource('produk', ProdukAdminController::class);
+
+        Route::get('/pesanan', [PesananController::class, 'index'])
+    ->name('pesanan.index');
+    Route::get('/pesanan/{id}', [PesananController::class, 'show'])
+    ->name('pesanan.show');
+    Route::patch('/pesanan/{id}/status', [PesananController::class, 'updateStatus'])
+    ->name('pesanan.update-status');
         Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('dashboard');
 
