@@ -1,71 +1,53 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('back_office.layouts.app')
 
-    <title>Back Office - TokoSaya</title>
+@section('judul-halaman', 'Dashboard')
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@section('konten')
+<div class="container-fluid">
 
-</head>
-<body class="bg-gray-100">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Dashboard TokoSaya</h3>
+        </div>
 
- <nav class="bg-red-600 text-white px-6 py-4 shadow-md">
+        <div class="card-body">
+            <p>
+                Selamat datang,
+                <strong>{{ auth()->user()->name }}</strong>.
+            </p>
 
-        <div class="flex justify-between items-center">
+            <a href="{{ route('back-office.produk.index') }}"
+               class="btn btn-primary">
+                <i class="bi bi-box-seam me-1"></i>
+                Halaman Produk
+            </a>
 
-            <h1 class="font-bold text-xl">
-                TokoSaya - Back Office
-            </h1>
+            <a href="{{ route('back-office.pesanan.index') }}"
+               class="btn btn-success">
+                <i class="bi bi-receipt me-1"></i>
+                Daftar Pesanan
+            </a>
+        </div>
+    </div>
 
-
-            <div class="flex items-center gap-4">
-
-                <span>
-                    {{ auth()->user()->name }}
-                </span>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <button type="submit"
-                            class="bg-blue-500 hover:bg-red-700 px-4 py-2 rounded font-semibold">
-                        Logout
-                    </button>
-
-                </form>
-
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <div class="small-box text-bg-primary">
+                <div class="inner">
+                    <h3>{{ $jumlahPesananBaru }}</h3>
+                    <p>Pesanan Baru</p>
+                </div>
+                <div class="small-box-icon">
+                    <i class="bi bi-cart"></i>
+                </div>
+                <a href="{{ route('back-office.pesanan.index') }}"
+                   class="small-box-footer link-light">
+                    Lihat Daftar Pesanan
+                    <i class="bi bi-arrow-right-circle"></i>
+                </a>
             </div>
-
         </div>
+    </div>
 
-    </nav>
-
-    <main class="container mx-auto px-6 py-10">
-
-        <div class="bg-white p-8 rounded-lg shadow">
-
-            <h2 class="text-3xl font-bold mb-4">
-                Dashboard
-            </h2>
-
-
-    <p class="mb-4">
-    Selamat datang,
-    <strong>{{ auth()->user()->name }}</strong>.
-    </p>
-
-    <a href="{{ route('back-office.produk.index') }}"
-   class="bg-blue-500 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold inline-flex items-center">
-    Halaman Produk
-    </a>
-
-
-
-        </div>
-
-    </main>
-
-</body>
-</html>
+</div>
+@endsection
