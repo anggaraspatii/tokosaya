@@ -1,3 +1,4 @@
+
 @extends('back_office.layouts.app')
 
 @section('judul-halaman', 'Daftar Pesanan')
@@ -18,24 +19,43 @@
                         <th>Nama Pemesan</th>
                         <th>Tanggal</th>
                         <th>Total</th>
-                        <th>Status</th>
+                        <th>Status Pesanan</th>
+                        <th>Pembayaran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @forelse ($pesanans as $pesanan)
+                        @php
+                            [$label, $warna] = $pesanan->labelBayar();
+                        @endphp
+
                         <tr>
                             <td>{{ $loop->iteration + ($pesanans->currentPage() - 1) * $pesanans->perPage() }}</td>
+
                             <td>{{ $pesanan->nomor_pesanan }}</td>
+
                             <td>{{ $pesanan->nama_pemesan }}</td>
+
                             <td>{{ $pesanan->created_at->format('d-m-Y H:i') }}</td>
-                            <td>Rp {{ number_format((float) $pesanan->total_harga, 0, ',', '.') }}</td>
+
+                            <td>
+                                Rp {{ number_format((float) $pesanan->total_harga, 0, ',', '.') }}
+                            </td>
+
                             <td>
                                 <span class="badge text-bg-primary">
                                     {{ ucfirst($pesanan->status) }}
                                 </span>
                             </td>
+
+                            <td>
+                                <span class="badge text-bg-{{ $warna }}">
+                                    {{ $label }}
+                                </span>
+                            </td>
+
                             <td>
                                 <a href="{{ route('back-office.pesanan.show', $pesanan->id) }}"
                                    class="btn btn-sm btn-info">
@@ -43,9 +63,10 @@
                                 </a>
                             </td>
                         </tr>
+
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center">
+                            <td colspan="8" class="text-center">
                                 Belum ada pesanan.
                             </td>
                         </tr>

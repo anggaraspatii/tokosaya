@@ -101,4 +101,12 @@ return [
     'stock_available' => 'Stok tersedia',
     'other_products' => 'Lihat Produk Lain',
 
+
+    // Status Pembayaran Midtrans
+    'lunas' => 'Lunas',
+    'menunggu' => 'Menunggu Pembayaran',
+    'gagal' => 'Gagal',
+    'kedaluwarsa' => 'Kedaluwarsa',
+    'belum_dibayar' => 'Belum Dibayar',
+
 ];

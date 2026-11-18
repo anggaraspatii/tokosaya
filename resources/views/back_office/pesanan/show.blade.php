@@ -56,6 +56,49 @@
             <p><strong>Alamat:</strong> {{ $pesanan->alamat }}</p>
             <p><strong>Catatan:</strong> {{ $pesanan->catatan ?: '-' }}</p>
             <p><strong>Total Pesanan:</strong>
+
+<hr>
+
+<h4 class="mb-3">Informasi Pembayaran</h4>
+
+@php
+    [$labelBayar, $warnaBayar] = $pesanan->labelBayar();
+    $pembayaranTerakhir = $pesanan->pembayaran->first();
+@endphp
+
+<p>
+    <strong>Status Pembayaran:</strong>
+    <span class="badge text-bg-{{ $warnaBayar }}">
+        {{ $labelBayar }}
+    </span>
+</p>
+
+<p>
+    <strong>Order ID Midtrans:</strong>
+    {{ $pesanan->midtrans_order_id ?: '-' }}
+</p>
+
+<p>
+    <strong>Metode Pembayaran:</strong>
+    {{ $pesanan->metode_bayar ?: '-' }}
+</p>
+
+<p>
+    <strong>Dibayar Pada:</strong>
+    {{ $pesanan->dibayar_pada?->format('d-m-Y H:i:s') ?? '-' }}
+</p>
+
+@if ($pembayaranTerakhir)
+    <p>
+        <strong>Transaction ID:</strong>
+        {{ $pembayaranTerakhir->transaction_id ?: '-' }}
+    </p>
+
+    <p>
+        <strong>Transaction Status:</strong>
+        {{ $pembayaranTerakhir->transaction_status ?: '-' }}
+    </p>
+@endif
                 Rp {{ number_format((float) $pesanan->total_harga, 0, ',', '.') }}
             </p>
         </div>
@@ -64,6 +107,62 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Produk dalam Pesanan</h3>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h3 class="card-title">Riwayat Notifikasi Midtrans</h3>
+    </div>
+
+    <div class="card-body table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Transaction Status</th>
+                    <th>Nominal</th>
+                    <th>Signature Sah</th>
+                    <th>Waktu</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @forelse ($pesanan->pembayaran as $bayar)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+
+                        <td>{{ $bayar->transaction_status ?: '-' }}</td>
+
+                        <td>
+                            Rp {{ number_format((float) $bayar->gross_amount, 0, ',', '.') }}
+                        </td>
+
+                        <td>
+                            @if ($bayar->signature_sah)
+                                <span class="badge text-bg-success">
+                                    Valid
+                                </span>
+                            @else
+                                <span class="badge text-bg-danger">
+                                    Tidak Sah
+                                </span>
+                            @endif
+                        </td>
+
+                        <td>
+                            {{ $bayar->created_at->format('d-m-Y H:i:s') }}
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            Belum ada riwayat notifikasi.
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
         </div>
 
         <div class="card-body table-responsive">

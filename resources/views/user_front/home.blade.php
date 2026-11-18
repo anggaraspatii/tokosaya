@@ -138,7 +138,7 @@
                         Rp {{ number_format($item->harga, 0, ',', '.') }}
                     </p>
 
-                    <a href="{{ route('produk.show', $item->id) }}"
+                    <a href="{{ route('produk.index', $item->id) }}"
                        class="block text-center bg-primary text-white font-semibold py-2 px-4 rounded-full hover:opacity-90">
                         {{ __('web.product_detail') }}
                     </a>

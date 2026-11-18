@@ -12,14 +12,21 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+    $middleware->trustProxies(at: '*');
     $middleware->alias([
         'pastikan.admin' => \App\Http\Middleware\PastikanAdmin::class,
     ]);
+
     $middleware->web(
-    append: [
-        \App\Http\Middleware\SetBahasa::class,
-    ],
+        append: [
+            \App\Http\Middleware\SetBahasa::class,
+        ],
     );
+
+    // Pengecualian CSRF khusus notifikasi Midtrans.
+    $middleware->validateCsrfTokens(except: [
+        'midtrans/notifikasi',
+    ]);
 })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

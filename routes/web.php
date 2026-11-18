@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -12,6 +11,8 @@ use App\Http\Controllers\BahasaController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BackOffice\PesananController;
+use App\Http\Controllers\MidtransWebhookController;
+use App\Http\Controllers\MidtransController;
 
 Route::get('/', function () {
     $produk = Produk::with('kategori')
@@ -101,3 +102,16 @@ Route::middleware('pastikan.admin')
         Route::resource('kategori', KategoriController::class);
         Route::resource('produk', ProdukAdminController::class);
     });
+
+    // Notifikasi pembayaran dari Midtrans
+Route::post('/midtrans/notifikasi', [
+    MidtransWebhookController::class,
+    'handle'
+])->name('midtrans.notifikasi');
+
+// Pembayaran Midtrans
+Route::get('/pesanan/{id}/pembayaran', [MidtransController::class, 'show'])
+    ->name('pembayaran.show');
+
+Route::post('/pesanan/{id}/bayar', [MidtransController::class, 'bayar'])
+    ->name('pembayaran.bayar');

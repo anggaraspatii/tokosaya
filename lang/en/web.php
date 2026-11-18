@@ -101,4 +101,11 @@ return [
     'stock_available' => 'Available stock',
     'other_products' => 'View Other Products',
 
+    // Midtrans Payment Status
+    'lunas' => 'Paid',
+    'menunggu' => 'Waiting for Payment',
+    'gagal' => 'Failed',
+    'kedaluwarsa' => 'Expired',
+    'belum_dibayar' => 'Unpaid',
+
 ];
