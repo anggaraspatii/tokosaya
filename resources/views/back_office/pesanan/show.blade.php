@@ -51,6 +51,12 @@
         {{ session('success') }}
     </div>
 @endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
             <p><strong>Nama Pemesan:</strong> {{ $pesanan->nama_pemesan }}</p>
             <p><strong>Telepon:</strong> {{ $pesanan->telepon }}</p>
             <p><strong>Alamat:</strong> {{ $pesanan->alamat }}</p>
