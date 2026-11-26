@@ -18,6 +18,8 @@
                         <th>Nomor Pesanan</th>
                         <th>Nama Pemesan</th>
                         <th>Tanggal</th>
+                        <th>Kurir</th>
+                        <th>Ongkos Kirim</th>
                         <th>Total</th>
                         <th>Status Pesanan</th>
                         <th>Pembayaran</th>
@@ -32,13 +34,33 @@
                         @endphp
 
                         <tr>
-                            <td>{{ $loop->iteration + ($pesanans->currentPage() - 1) * $pesanans->perPage() }}</td>
+                            <td>
+                                {{ $loop->iteration + ($pesanans->currentPage() - 1) * $pesanans->perPage() }}
+                            </td>
 
                             <td>{{ $pesanan->nomor_pesanan }}</td>
 
                             <td>{{ $pesanan->nama_pemesan }}</td>
 
-                            <td>{{ $pesanan->created_at->format('d-m-Y H:i') }}</td>
+                            <td>
+                                {{ $pesanan->created_at->format('d-m-Y H:i') }}
+                            </td>
+
+                            <td>
+                                @if ($pesanan->kurir)
+                                    {{ strtoupper($pesanan->kurir) }}
+                                    <br>
+                                    <small class="text-muted">
+                                        {{ $pesanan->layanan_kurir ?: '-' }}
+                                    </small>
+                                @else
+                                    -
+                                @endif
+                            </td>
+
+                            <td>
+                                Rp {{ number_format((float) ($pesanan->ongkir ?? 0), 0, ',', '.') }}
+                            </td>
 
                             <td>
                                 Rp {{ number_format((float) $pesanan->total_harga, 0, ',', '.') }}
@@ -66,7 +88,7 @@
 
                     @empty
                         <tr>
-                            <td colspan="8" class="text-center">
+                            <td colspan="10" class="text-center">
                                 Belum ada pesanan.
                             </td>
                         </tr>
