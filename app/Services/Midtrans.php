@@ -56,22 +56,40 @@ class Midtrans
         // 5. Ambil detail produk.
         $pesanan->loadMissing('detailPesanans');
 
-        $rincian = [];
 
-        foreach ($pesanan->detailPesanans as $baris) {
-            $rincian[] = [
-                'id'       => (string) ($baris->produk_id ?? 'X'),
-                'name'     => Str::limit($baris->nama_produk, 47, '...'),
-                'price'    => (int) round($baris->harga),
-                'quantity' => (int) $baris->jumlah,
-            ];
-        }
+$rincian = [];
 
-        if (empty($rincian)) {
-            throw new RuntimeException(
-                'Detail produk pesanan tidak ditemukan.'
-            );
-        }
+// Masukkan rincian produk terlebih dahulu.
+foreach ($pesanan->detailPesanans as $baris) {
+    $rincian[] = [
+        'id'       => (string) ($baris->produk_id ?? 'X'),
+        'name'     => Str::limit($baris->nama_produk, 47, '...'),
+        'price'    => (int) round($baris->harga),
+        'quantity' => (int) $baris->jumlah,
+    ];
+}
+
+// Pastikan detail produk tersedia.
+if (empty($rincian)) {
+    throw new RuntimeException(
+        'Detail produk pesanan tidak ditemukan.'
+    );
+}
+
+// Tambahkan ongkos kirim dari RajaOngkir.
+if ((int) round($pesanan->ongkir) > 0) {
+    $rincian[] = [
+        'id'       => 'ONGKIR',
+        'name'     => Str::limit(
+            "Ongkir {$pesanan->kurir} {$pesanan->layanan_kurir}",
+            47,
+            '...'
+        ),
+        'price'    => (int) round($pesanan->ongkir),
+        'quantity' => 1,
+    ];
+}
+
 
         // 6. Periksa total pembayaran.
         $total = (int) round($pesanan->total_harga);
