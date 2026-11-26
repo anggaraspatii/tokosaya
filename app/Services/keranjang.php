@@ -53,16 +53,16 @@ class Keranjang
 
         if ($jumlah < 1) {
             throw ValidationException::withMessages([
-            'jumlah' => __('web.cart_min_quantity'),
-        ]);
+                'jumlah' => __('web.cart_min_quantity'),
+            ]);
         }
 
         if ($jumlahBaru > $produk->stok) {
             throw ValidationException::withMessages([
-            'jumlah' => __('web.cart_stock_error', [
-            'stok' => $produk->stok,
-    ]),
-]);
+                'jumlah' => __('web.cart_stock_error', [
+                    'stok' => $produk->stok,
+                ]),
+            ]);
         }
 
         $keranjang[$produkId] = [
@@ -81,10 +81,10 @@ class Keranjang
         }
 
         if ($jumlah < 1) {
-    throw ValidationException::withMessages([
-        'jumlah' => __('web.cart_min_quantity'),
-    ]);
-}
+            throw ValidationException::withMessages([
+                'jumlah' => __('web.cart_min_quantity'),
+            ]);
+        }
 
         $produk = Produk::where('status', true)->find($produkId);
 
@@ -95,12 +95,12 @@ class Keranjang
         }
 
         if ($jumlah > $produk->stok) {
-    throw ValidationException::withMessages([
-        'jumlah' => __('web.cart_stock_error', [
-            'stok' => $produk->stok,
-        ]),
-    ]);
-}
+            throw ValidationException::withMessages([
+                'jumlah' => __('web.cart_stock_error', [
+                    'stok' => $produk->stok,
+                ]),
+            ]);
+        }
 
         $keranjang[$produkId] = [
             'jumlah' => $jumlah,
@@ -133,5 +133,24 @@ class Keranjang
     {
         return (float) collect($this->semua())
             ->sum('subtotal');
+    }
+
+    /**
+     * Total berat isi keranjang dalam gram.
+     */
+    public function totalBerat(): int
+    {
+        return (int) collect($this->semua())->sum(
+            function ($item) {
+                $berat = (int) ($item['produk']->berat ?? 0);
+
+                // Gunakan berat bawaan jika berat produk belum diisi.
+                if ($berat <= 0) {
+                    $berat = (int) config('rajaongkir.berat_bawaan', 1000);
+                }
+
+                return $berat * (int) $item['jumlah'];
+            }
+        );
     }
 }
