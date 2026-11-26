@@ -108,4 +108,26 @@ return [
     'kedaluwarsa' => 'Expired',
     'belum_dibayar' => 'Unpaid',
 
+
+// ---------- Shipping (Pertemuan 11) ----------
+'provinsi'              => 'Province',
+'kecamatan'             => 'District',
+'pilih_provinsi'        => '— Choose a province —',
+'pilih_kota'            => '— Choose a city / regency —',
+'pilih_kecamatan'       => '— Choose a district —',
+'pengiriman'            => 'Shipping',
+'pilih_layanan'         => 'Choose a shipping service',
+'pilih_alamat_dulu'     => 'Choose the destination district to see courier options.',
+'memuat'                => 'Loading…',
+'tidak_ada_layanan'     => 'No courier service is available for this destination.',
+'ongkir_gagal'          => 'Shipping cost cannot be calculated right now. Please try again in a moment.',
+'berat_total'           => 'Total weight',
+'estimasi'              => 'est.',
+'layanan_tidak_berlaku' => 'The selected shipping service is no longer valid. Please choose again.',
+'wilayah_tidak_cocok'   => 'The city or district does not match the selected province.',
+'kota' => 'City / Regency',
+'kode_pos' => 'Postal Code',
+'ongkos_kirim' => 'Shipping Cost',
+'total' => 'Total',
+
 ];

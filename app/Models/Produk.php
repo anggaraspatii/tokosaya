@@ -14,12 +14,14 @@ class Produk extends Model
         'harga',
         'deskripsi',
         'stok',
+        'berat',
         'gambar',
         'status',
     ];
 
     protected $casts = [
         'harga' => 'decimal:2',
+        'berat' => 'integer',
         'status' => 'boolean',
     ];
 

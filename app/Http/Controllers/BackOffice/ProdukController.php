@@ -35,6 +35,7 @@ class ProdukController extends Controller
             'harga' => ['required', 'numeric', 'min:0'],
             'deskripsi' => ['required', 'string', 'min:10'],
             'stok' => ['required', 'integer', 'min:0'],
+            'berat' => ['required', 'integer', 'min:1', 'max:50000'],
             'gambar' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'status' => ['required', 'boolean'],
         ]);
@@ -80,6 +81,7 @@ class ProdukController extends Controller
             'harga' => ['required', 'numeric', 'min:0'],
             'deskripsi' => ['required', 'string', 'min:10'],
             'stok' => ['required', 'integer', 'min:0'],
+            'berat' => ['required', 'integer', 'min:1', 'max:50000'],
             'gambar' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'status' => ['required', 'boolean'],
         ]);

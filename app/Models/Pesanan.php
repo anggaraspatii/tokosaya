@@ -24,12 +24,26 @@ class Pesanan extends Model
         'metode_bayar',
         'dibayar_pada',
         'stok_dikembalikan',
+
+        // Kolom pengiriman
+        'provinsi',
+        'kota',
+        'kode_pos',
+        'kecamatan',
+        'kecamatan_id',
+        'kurir',
+        'layanan_kurir',
+        'estimasi_kirim',
+        'berat_total',
+        'ongkir',
+
     ];
 
     protected $casts = [
         'batas_bayar'       => 'datetime',
         'dibayar_pada'      => 'datetime',
         'stok_dikembalikan' => 'boolean',
+        'ongkir' => 'integer',
     ];
 
     public function detailPesanans(): HasMany
